@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.ul.fc.css.weatherwise.dataaccess.DataSource;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 import pt.ul.fc.css.weatherwise.business.dto.AuditLogDTO;
 
 

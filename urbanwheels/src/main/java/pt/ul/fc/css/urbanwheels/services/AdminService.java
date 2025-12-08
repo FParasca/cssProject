@@ -6,7 +6,6 @@ import pt.ul.fc.css.urbanwheels.dto.AdminDTO;
 import pt.ul.fc.css.urbanwheels.entities.Admin;
 import pt.ul.fc.css.urbanwheels.repository.AdminRepository;
 import pt.ul.fc.css.urbanwheels.repository.UserRepository;
-import pt.ul.fc.css.urbanwheels.dto.AdminDTO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -41,7 +40,9 @@ public class AdminService  {
 
         List<Admin> topAdmins = adminRepository.findTopAdminsByMaintenanceSince(oneMonthAgo);
 
+
         return topAdmins.stream()
+                .limit(10)
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }

@@ -5,8 +5,8 @@ import pt.ul.fc.css.weatherwise.business.dto.WeatherDataDTO;
 import pt.ul.fc.css.weatherwise.business.exception.ApplicationException;
 import pt.ul.fc.css.weatherwise.dataaccess.rdgw.AuditLogRowDataGateway;
 import pt.ul.fc.css.weatherwise.dataaccess.rdgw.CurrentWeatherRowDataGateway;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.RecordNotFoundException;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.RecordNotFoundException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 
 import java.time.LocalDateTime;

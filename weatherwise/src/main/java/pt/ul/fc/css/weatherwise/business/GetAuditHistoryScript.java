@@ -3,7 +3,7 @@ package pt.ul.fc.css.weatherwise.business;
 import pt.ul.fc.css.weatherwise.business.dto.AuditLogDTO;
 import pt.ul.fc.css.weatherwise.business.exception.ApplicationException;
 import pt.ul.fc.css.weatherwise.dataaccess.rdgw.AuditLogRowDataGateway;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 
 import java.util.List;

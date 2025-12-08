@@ -2,6 +2,7 @@ package pt.ul.fc.css.urbanwheels.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pt.ul.fc.css.urbanwheels.entities.Station;
 
@@ -12,6 +13,9 @@ import java.util.Optional;
 @Repository
 public interface StationRepository extends JpaRepository<Station, Long> {
     Optional<Station> findByName(String name);
+
+    @Query("SELECT s FROM Station s WHERE LOWER(s.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Station> findByNameContainingIgnoreCase(@Param("name") String name);
 
     @Query("SELECT s FROM Station s JOIN s.bikesAssociated b GROUP BY s ORDER BY COUNT(b) DESC")
     List<Station> findStationsWithMostBikes();

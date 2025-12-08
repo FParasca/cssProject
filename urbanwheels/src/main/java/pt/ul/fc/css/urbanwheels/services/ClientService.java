@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pt.ul.fc.css.urbanwheels.dto.ClientDTO;
-import pt.ul.fc.css.urbanwheels.dto.TripDTO;
 import pt.ul.fc.css.urbanwheels.entities.Client;
 import pt.ul.fc.css.urbanwheels.repository.ClientRepository;
 import pt.ul.fc.css.urbanwheels.repository.UserRepository;
@@ -13,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 @Service
 public class ClientService{
@@ -42,13 +42,16 @@ public class ClientService{
     @Transactional(readOnly = true)
     public List<ClientDTO> getTopClientsLastMonth() {
         LocalDateTime oneMonthAgo = LocalDateTime.now().minusMonths(1);
-
-        List<Client> topClients = clientRepository.findTopClientsByTripsSince(oneMonthAgo);
-
-        return topClients.stream()
-                .map(this::mapToDto)
-                .collect(Collectors.toList());
+        List<Long> topIds = clientRepository.findTopClientIdsByTripsSince(oneMonthAgo);
+        if (topIds == null || topIds.isEmpty()) return List.of();
+    
+        List<Client> topClients = clientRepository.findAllById(
+            topIds.stream().limit(10).collect(Collectors.toList())
+        );
+        topClients.sort(Comparator.comparingInt(c -> topIds.indexOf(c.getId())));
+        return topClients.stream().map(this::mapToDto).collect(Collectors.toList());
     }
+
     private ClientDTO mapToDto(Client client) {
         return new ClientDTO(
                 client.getId(),

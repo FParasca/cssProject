@@ -1,6 +1,6 @@
 package pt.ul.fc.css.weatherwise.dataaccess;
 
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

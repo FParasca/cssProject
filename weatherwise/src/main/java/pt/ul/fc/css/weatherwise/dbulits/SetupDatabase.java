@@ -1,7 +1,7 @@
 package pt.ul.fc.css.weatherwise.dbulits;
 
 import pt.ul.fc.css.weatherwise.dataaccess.DataSource;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

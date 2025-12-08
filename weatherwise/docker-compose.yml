@@ -9,13 +9,13 @@ services:
     build:
       context: .
       dockerfile: postgres.dockerfile
-    container_name: pgserver
+    container_name: weatherwise-pgserver
     volumes:
       - postgres-data:/var/lib/postgresql/data
     expose:
-      - 5432
+      - 5433
     ports:
-      - 5432:5432
+      - 5433:5433
     networks:
       - dbnet
     environment:
@@ -31,9 +31,9 @@ services:
       context: .
     container_name: springbootapp
     expose:
-      - 8080
+      - 8082
     ports:
-      - 8080:8080
+      - 8082:8080
     restart: unless-stopped
     depends_on:
       - pgserver

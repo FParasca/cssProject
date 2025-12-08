@@ -7,7 +7,7 @@ import java.util.List;
 
 import pt.ul.fc.css.weatherwise.business.dto.WeatherDataDTO;
 import pt.ul.fc.css.weatherwise.dataaccess.DataSource;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 public class HistoricalWeatherRowDataGateway {
     private static final String HISTORICAL_WEATHER_SQL_INSERT = "INSERT INTO previsao (id_localidade, data, temperatura, condicao) VALUES ((SELECT id FROM localidade WHERE nome = ?), ?, ?, ?)";

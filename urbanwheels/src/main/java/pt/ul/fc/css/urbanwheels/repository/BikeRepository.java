@@ -15,6 +15,6 @@ public interface BikeRepository extends JpaRepository<Bike, Long> {
 
     List<Bike> findByStatus(BikeStatus status);
 
-    @Query("SELECT b FROM Bike b JOIN b.maintenanceHistory m WHERE m.date >= :date GROUP BY b ORDER BY SUM(m.timeInMaintenance) DESC")
+    @Query("SELECT b FROM Bike b JOIN b.maintenanceHistory m WHERE m.date >= :date GROUP BY b ORDER BY COUNT(m) DESC")
     List<Bike> findBikesWithMostMaintenanceTimeSince(@Param("date") LocalDateTime date);
 }

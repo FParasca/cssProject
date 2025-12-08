@@ -1,4 +1,4 @@
-package pt.ul.fc.css.salesys.config;
+package pt.ul.fc.css.urbanwheels.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

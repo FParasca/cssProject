@@ -14,8 +14,18 @@ import java.util.Optional;
 public interface TripRepository extends JpaRepository<Trip, Long> {
     Optional<Trip> findByBikeIdAndEndTimeIsNull(Long bikeId);
 
-    @Query("SELECT t.startStation FROM Trip t WHERE t.client.email = :email GROUP BY t.startStation ORDER BY COUNT(t) DESC")
-    List<Station> findFavoriteStationsByClientEmail(@Param("email") String email);
 
     List<Trip> findByStartStationIdAndEndStationId(Long startStationId, Long endStationId);
+
+    @Query("SELECT t.startStation FROM Trip t WHERE t.client.email = :email GROUP BY t.startStation ORDER BY COUNT(t) DESC")
+    List<Station> findTopStartStationsByUser(@Param("email") String email);
+    
+    @Query("SELECT t.endStation FROM Trip t WHERE t.client.email = :email AND t.endStation IS NOT NULL GROUP BY t.endStation ORDER BY COUNT(t) DESC")
+    List<Station> findTopEndStationsByUser(@Param("email") String email);
+
+    @Query("SELECT COUNT(t) FROM Trip t WHERE t.startStation.id = :stationId AND t.client.email = :email")
+    long countByStartStationAndUser(@Param("stationId") Long stationId, @Param("email") String email);
+
+    @Query("SELECT COUNT(t) FROM Trip t WHERE t.endStation.id = :stationId AND t.client.email = :email")
+    long countByEndStationAndUser(@Param("stationId") Long stationId, @Param("email") String email);
 }

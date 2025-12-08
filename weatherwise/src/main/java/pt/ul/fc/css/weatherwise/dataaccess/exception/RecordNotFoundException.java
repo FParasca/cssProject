@@ -1,4 +1,4 @@
-package pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception;
+package pt.ul.fc.css.weatherwise.dataaccess.exception;
 
 public class RecordNotFoundException extends PersistenceException {
 

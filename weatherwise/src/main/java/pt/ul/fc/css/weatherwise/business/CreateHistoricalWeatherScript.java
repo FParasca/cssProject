@@ -1,7 +1,7 @@
 package pt.ul.fc.css.weatherwise.business;
 
 import pt.ul.fc.css.weatherwise.dataaccess.rdgw.HistoricalWeatherRowDataGateway;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 import pt.ul.fc.css.weatherwise.business.dto.WeatherDataDTO;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -13,7 +13,9 @@ import java.time.LocalDateTime;
 public interface ClientRepository extends JpaRepository<Client, Long> {
     Optional<Client> findByEmail(String email);
 
-    @Query("SELECT c FROM Client c JOIN c.trips t WHERE t.startTime >= :date GROUP BY c ORDER BY COUNT(t) DESC")
-    List<Client> findTopClientsByTripsSince(@Param("date") LocalDateTime date);
+
+
+@Query("SELECT c.id FROM Client c JOIN c.trips t WHERE t.startTime >= :date GROUP BY c.id ORDER BY COUNT(t) DESC")
+List<Long> findTopClientIdsByTripsSince(@Param("date") LocalDateTime date);
 
 }

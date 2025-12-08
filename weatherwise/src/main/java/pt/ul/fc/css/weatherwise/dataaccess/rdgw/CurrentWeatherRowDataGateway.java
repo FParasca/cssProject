@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import pt.ul.fc.css.weatherwise.business.dto.WeatherDataDTO;
 import pt.ul.fc.css.weatherwise.dataaccess.DataSource;
-import pt.ul.fc.css.weatherwise.dataaccess.rdgw.exception.PersistenceException;
+import pt.ul.fc.css.weatherwise.dataaccess.exception.PersistenceException;
 
 public class CurrentWeatherRowDataGateway {
     private static final String FIND_BY_LOCATION_NAME = "SELECT p.condicao, p.temperatura, p.data, l.nome FROM previsao p JOIN localidade l ON p.id_localidade = l.id WHERE l.nome = ? AND p.data = CURRENT_DATE";

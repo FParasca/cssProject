@@ -1,7 +1,7 @@
 services:
   pgserver:
     image: postgres:latest
-    container_name: pgserver
+    container_name: urbanwheels-pgserver
     volumes:
       - postgres-data:/var/lib/postgresql
     expose:
